@@ -1,13 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.raescott</groupId>
-  <artifactId>webFragmentExample</artifactId>
-  <packaging>war</packaging>
+  <artifactId>webFragmentExample-parent</artifactId>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
 
   <name>webFragmentExample Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+  <properties>
+    <tomcat-version>7.0.47</tomcat-version>
+  </properties>
+
+  <modules>
+    <module>app1</module>
+    <module>app2</module>
+    <module>war</module>
+  </modules>
 
   <dependencies>
     <dependency>
@@ -44,18 +55,19 @@
     <finalName>webFragmentExample</finalName>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+      </plugin>
+      <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
         <configuration>
           <port>8080</port>
           <systemProperties>
-            <!-- These system properties take precedence over the ones set in
-				the host environment -->
+            <!-- These system properties take precedence over the ones set in the host environment -->
             <JAVA_OPTS>-Xmx1024m</JAVA_OPTS>
-            <!-- These work and override if you uncomment, but they are an unexpected
-				location to make these changes. <JDBC_URL>jdbc:postgresql://localhost:5432/cccassess</JDBC_URL>
-				<JDBC_USER>cccassess</JDBC_USER> <JDBC_PASSWORD>cccassess</JDBC_PASSWORD> -->
           </systemProperties>
           <httpsPort>8443</httpsPort>
           <keystoreFile>${basedir}/src/test/resources/keystore.jks</keystoreFile>

@@ -9,7 +9,7 @@
 		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/config2/root-context.xml</param-value>
+		<param-value>/WEB-INF/config/root-context.xml</param-value>
 	</context-param>
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -19,17 +19,17 @@
 
 	<!-- Front controller configuration servicing all web requests -->
 	<servlet>
-		<servlet-name>app2-dispatcher</servlet-name>
+		<servlet-name>app-dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/config2/servlet-config.xml</param-value>
+			<param-value>/WEB-INF/config/servlet-config.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>app2-dispatcher</servlet-name>
-		<url-pattern>/app2</url-pattern>
+		<servlet-name>app-dispatcher</servlet-name>
+		<url-pattern>/app</url-pattern>
 	</servlet-mapping>
 </web-app>

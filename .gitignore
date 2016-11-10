@@ -5,3 +5,4 @@ dependency-reduced-pom.xml
 /webFragmentExample.iml
 /webFragmentExample.ipr
 /webFragmentExample.iws
+*.iml
